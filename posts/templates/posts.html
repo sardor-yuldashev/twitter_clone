@@ -1,10 +1,10 @@
+{% load humanize %}{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light-theme">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
     <title>Home</title>
@@ -15,6 +15,7 @@
         <div class="menu">
             <img src="{% static 'img/logo-techis.svg' %}" alt="">
             <h1>Home</h1>
+            <div class="theme-toggle" onclick="theme_toggle()"><div id="theme-toggle-knob"></div></div>
         </div>
         <form class="post_form" action="post/" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -24,9 +25,10 @@
                 <div class="grid-item-form-name"><input name="name" type="text" placeholder="Name" required></div>
                 <div class="grid-item-form-body"><textarea name="body" placeholder="Tell us anything" required></textarea></div>
                 <div class="grid-item-form-file">
-                    <label for="upload">Upload</label><span id="file-name">no file chosen</span>
+                    <label for="upload">Upload</label>
                     <input id="upload" name="image" type="file">
                 </div>
+                <div class="grid-item-form-file-name"><span id="file-name"></span></div>
                 <div class="grid-item-form-submit"><input type="submit" value="Tweet"></div>
             </div>
         </form>
@@ -35,7 +37,7 @@
             <div class="grid-container-post">
                 <div class="grid-item-user-image"><img src="{% static 'img/user.png' %}" alt=""></div>
                 <div class="grid-item-post-name"><p>{{ post.name }}</p></div>
-                <div class="grid-item-post-date"><p>{{ post.date }}</p></div>
+                <div class="grid-item-post-date"><p>{{ post.date|naturaltime }}</p></div>
                 <div class="grid-item-post-options">
                     <div class="options-icon"><p onclick="menu_toggle('{{post.id}}')">•••</p></div>
                     <ul id="options-menu{{post.id}}">

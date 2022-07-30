@@ -1,26 +1,73 @@
 * { margin: 0; padding: 0; border: 0;}
 
+.light-theme {
+    --theme-button: rgb(155, 203, 223);
+    --theme-button-border: rgb(78, 142, 172);
+    --theme-button-knob: rgb(243, 241, 109);
+    --theme-button-know-border: rgb(248, 206, 89);
+    --border: rgb(224, 224, 224);
+    --user-name-input: rgb(221, 248, 239);
+    --tweet-button: rgb(73, 150, 223);
+    --tweet-button-text: rgb(250, 252, 253);
+    --ditch: rgb(228, 228, 228);
+    --text: rgb(51, 51, 51);
+    --gray-text: rgb(71, 71, 71);
+    --gray-button: rgb(207, 207, 207);
+    --gray-button-text: #212529;
+    --heart-inactive: rgb(202, 177, 177);
+    --bar: rgb(235, 235, 235);
+    --card: rgb(243, 243, 243);
+    --background: rgb(179, 179, 179);
+}
+
+.dark-theme {
+    --theme-button: rgb(69, 91, 165);
+    --theme-button-border: rgb(56, 65, 117);
+    --theme-button-knob: rgb(235, 235, 235);
+    --theme-button-know-border: rgb(189, 189, 189);
+    --border: rgb(17, 17, 17);
+    --user-name-input: rgb(221, 248, 239);
+    --tweet-button: rgb(73, 150, 223);
+    --tweet-button-text: rgb(250, 252, 253);
+    --ditch: rgb(26, 26, 26);
+    --text: rgb(214, 214, 214);
+    --gray-text: rgb(128, 128, 128);
+    --gray-button: rgb(230, 230, 230);
+    --gray-button-text: #212529;
+    --heart-inactive: rgb(80, 58, 58);
+    --bar: rgb(23, 25, 29);
+    --card: rgb(33, 37, 43);
+    --background: rgb(17, 19, 22);
+}
+
 html,
 body {
     height: 100%;
     font-family: sans-serif;
+    background-color: var(--background);
+}
+
+h1, p {
+    color: var(--text);
 }
 
 .content {
     max-width: 600px;
     margin: 0 auto;
-    border-left: 1px solid rgb(238, 238, 238);
-    border-right: 1px solid rgb(238, 238, 238);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
 }
 
 /* logo block */
 
 .menu {
+    position: relative;
     padding: 10px;
     display: flex;
     align-items: center;
     height: 50px;
-    border-bottom: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid var(--border);
+    background-color: var(--bar);
 }
 
 .menu img {
@@ -31,13 +78,52 @@ body {
     font-size: 20px;
     font-weight: bold;
     margin-left: 15px;
-    color: rgb(51, 51, 51);
+    color: var(--text);
+}
+
+.theme-toggle {
+    cursor: pointer;
+    border: 2px solid var(--theme-button-border);
+    border-radius: 15px;
+    width: 40px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    background-color: var(--theme-button);
+}
+
+.theme-toggle div {
+    border-radius: 50%;
+    border: 2px solid var(--theme-button-know-border);
+    width: 16px;
+    height: 16px;
+    background-color: var(--theme-button-knob);
+}
+
+.theme-toggle-anim-dark {
+    animation: go-dark .3s ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes go-dark {
+    0%   { transform: translate(0)}
+    100% { transform: translate(100%)}
+}
+
+.theme-toggle-anim-light {
+    animation: go-light .3s ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes go-light {
+    0%   { transform: translate(100%)}
+    100% { transform: translate(0)}
 }
 
 /* input form block */
 
 .post_form {
-    border-bottom: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid var(--border);
 }
 
 .grid-container-form {
@@ -45,9 +131,10 @@ body {
     grid-template-areas:
     'user-image form-name form-name form-name form-name form-name form-name form-name form-name form-name'
     '. form-body form-body form-body form-body form-body form-body form-body form-body form-body' 
-    '. form-file form-file form-file form-file form-file form-file form-file form-file form-submit';
+    '. form-file form-file-name form-file-name form-file-name form-file-name form-file-name . . form-submit';
     gap: 10px;
     padding: 10px;
+    background-color: var(--card);
 }
 
 .grid-item-form-name {
@@ -61,7 +148,8 @@ body {
     height: 40px;
     border-radius: 4px;
     width: 100%;
-    background-color: rgb(221, 248, 239);
+    background-color: var(--user-name-input);
+    border-bottom: 1px solid var(--border);
 }
 
 .grid-item-form-body {
@@ -72,8 +160,9 @@ body {
     padding: 10px;
     width: calc(100% - 20px);
     height: calc(100px - 20px);
+    border-radius: 4px;
     resize: none;
-    border-bottom: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid var(--border);
 }
 
 .grid-item-form-file {
@@ -87,14 +176,22 @@ body {
     cursor: pointer;
     border-radius: 4px;
     padding: 7px 10px;
-    background-color:rgb(230, 230, 230);
+    background-color:var(--gray-button);
     font-weight: bold;
-    color: #212529;
+    color: var(--gray-button-text);
 }
 
-.grid-item-form-file span {
-    color: #565758;
-    margin-left: 5px;
+.grid-item-form-file-name {
+    grid-area: form-file-name;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.grid-item-form-file-name span {
+    color: var(--gray-text);
 }
 
 .grid-item-form-file input[type="file"] {
@@ -112,8 +209,8 @@ body {
     border-radius: 4px;
     padding: 7px 10px;
     font-size: 15px;
-    color: rgb(250, 252, 253);
-    background-color: rgb(73, 150, 223);
+    color: var(--tweet-button-text);
+    background-color: var(--tweet-button);
 }
 
 /* gap */
@@ -121,8 +218,8 @@ body {
 .ditch {
     width: 100%;
     height: 10px;
-    background-color: rgb(247, 248, 248);
-    border-bottom: 1px solid rgb(238, 238, 238);
+    background-color: var(--ditch);
+    border-bottom: 1px solid var(--border);
 }
 
 /* post block */
@@ -136,7 +233,8 @@ body {
     '. post-likes . . . . . . . .';
     gap: 10px;
     padding: 10px;
-    border-bottom: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid var(--border);
+    background-color: var(--card);
 }
 
 .grid-item-user-image {
@@ -156,7 +254,7 @@ body {
 
 .grid-item-post-name p {
     padding-top: 5px;
-    color: rgb(21, 32, 43);
+    color: var(--text);
     font-weight: bold;
     font-size: 17px;
 }
@@ -167,7 +265,7 @@ body {
 
 .grid-item-post-date p {
     padding-top: 5px;
-    color: rgb(71, 71, 71);
+    color: var(--gray-text);
     padding-left: 10px;
     font-size: 14px;
 }
@@ -180,7 +278,7 @@ body {
 .options-icon {
     text-align: right;
     letter-spacing: 2px;
-    color: rgb(112, 112, 112);
+    color: var(--gray-button);
     font-size: 25px;
     cursor: pointer;
     user-select: none;
@@ -201,7 +299,7 @@ body {
     -webkit-user-select: none; /*Safari*/
     -moz-user-select: none; /*Firefox*/
     background-color: white;
-    border: 1px solid rgb(202, 202, 202);
+    border: 1px solid var(--border);
 
 }
 
@@ -221,7 +319,7 @@ body {
 #grid-item-post-image {
     border-radius: 20px;
     grid-area: post-image;
-    height: 300px;;
+    height: 300px;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
@@ -247,12 +345,12 @@ body {
     font-weight: normal;
     font-size: 20px;
     margin-left: 10px;
-    color: black;
+    color: var(--text);
 }
 
 .heart-icon {
     cursor: pointer;
-    background-color: rgb(202, 202, 202);
+    background-color: var(--heart-inactive);
     display: inline-block;
     position: relative;
     top: 0;
@@ -271,7 +369,7 @@ body {
 .heart-icon:before,
 .heart-icon:after {
     content: "";
-    background-color: rgb(202, 202, 202);
+    background-color: var(--heart-inactive);
     border-radius: 50%;
     position: absolute;
     height: 15px;
@@ -309,7 +407,8 @@ body {
     '. form-file form-file form-file form-file form-file form-file form-file form-cancel form-submit';
     gap: 10px;
     padding: 10px;
-    border-bottom: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid var(--border);
+    background-color: var(--card);
 }
 
 .grid-item-form-cancel {
@@ -323,6 +422,39 @@ body {
     border-radius: 4px;
     padding: 7px 10px;
     font-size: 15px;
-    color: #212529;
-    background-color: rgb(230, 230, 230);
+    color: var(--gray-button-text);
+    background-color: var(--gray-button);
+}
+
+/* mini screen */
+@media screen and (max-width: 420px) {
+
+    .grid-container-form {
+        grid-template-areas:
+        'user-image form-name form-name form-name form-name form-name form-name form-name form-name form-name'
+        'form-body form-body form-body form-body form-body form-body form-body form-body form-body form-body' 
+        'form-file form-file-name form-file-name form-file-name form-file-name form-file-name form-file-name . . form-submit';
+    }
+
+    .grid-item-user-image img {
+        max-width: 50px;
+        height: auto;
+    }
+    
+    .grid-item-form-name input {
+        font-size: 18px;
+    }
+
+    .grid-item-form-body textarea {
+        font-size: 18px;
+        height: calc(150px - 20px);
+    }
+
+    .grid-item-post-name p, .grid-item-post-body p {
+        font-size: 18px;
+    }
+
+    #grid-item-post-image {
+        height: 200px;
+    }
 }

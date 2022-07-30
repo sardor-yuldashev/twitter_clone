@@ -23,6 +23,27 @@ function menu_toggle(post_id){
     }
 }
 
+let day_mode = true;
+function theme_toggle(){
+    let el = document.getElementById("theme-toggle-knob");
+    let root = document.documentElement;
+    if(day_mode){
+        // night mode
+        root.classList.remove("light-theme");
+        root.classList.add("dark-theme");
+        el.classList.remove("theme-toggle-anim-light");
+        el.classList.add("theme-toggle-anim-dark");
+        day_mode = false;
+    }else{
+        // day mode
+        root.classList.remove("dark-theme");
+        root.classList.add("light-theme");
+        el.classList.remove("theme-toggle-anim-dark");
+        el.classList.add("theme-toggle-anim-light");
+        day_mode = true;
+    }
+}
+
 // change field selected file name
 let selected_file = document.getElementById("upload");
 selected_file.onchange = function(e){

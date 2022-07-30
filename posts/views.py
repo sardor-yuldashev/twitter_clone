@@ -5,6 +5,7 @@ from .models import Post
 from .models import User_data
 from .forms import PostsForm
 import random, string
+import datetime
 
 def posts(request):
     # result
