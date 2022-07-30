@@ -15,6 +15,7 @@
         <div class="menu">
             <img src="{% static 'img/logo-techis.svg' %}" alt="">
             <h1>Home</h1>
+            <div class="theme-toggle" onclick="theme_toggle()"><div id="theme-toggle-knob"></div></div>
         </div>
         <form action="save/", method="POST", enctype="multipart/form-data">
             {% csrf_token %}
@@ -24,12 +25,13 @@
                 <div class="grid-item-form-name"><input name="name" type="text" placeholder="Name" value="{{ post.name }}" required></div>
                 <div class="grid-item-form-body"><textarea name="body" placeholder="Tell us anything" required>{{ post.body }}</textarea></div>
                 <div class="grid-item-form-file">
-                    <label for="upload">Upload</label><span id="file-name">no file chosen</span>
+                    <label for="upload">Upload</label>
                     <input id="upload" name="image" type="file">
                 </div>
                 {% if post.image != None %}
-                    <div id="grid-item-post-image" onclick="window.open('{{ post.image.url }}', '_blank')" style="background: url('{{ post.image.url }}')"></div>
+                <div id="grid-item-post-image" onclick="window.open('{{ post.image.url }}', '_blank')" style="background: url('{{ post.image.url }}')"></div>
                 {% endif %}
+                <div class="grid-item-form-file-name"><span id="file-name"></span></div>
                 <div class="grid-item-form-cancel"><input type="button" value="Cancel" onclick="window.location.href = '/'" ></div>
                 <div class="grid-item-form-submit"><input type="submit" value="Update"></div>
             </div>

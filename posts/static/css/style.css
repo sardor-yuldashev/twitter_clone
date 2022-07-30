@@ -1,4 +1,11 @@
-* { margin: 0; padding: 0; border: 0;}
+* { 
+    margin: 0; padding: 0; border: 0;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
 
 .light-theme {
     --theme-button: rgb(155, 203, 223);
@@ -79,6 +86,11 @@ h1, p {
     font-weight: bold;
     margin-left: 15px;
     color: var(--text);
+    -webkit-touch-callout:default;
+    -webkit-user-select:text;
+    -moz-user-select:text;
+    -ms-user-select:text;
+    user-select:text;
 }
 
 .theme-toggle {
@@ -257,6 +269,11 @@ h1, p {
     color: var(--text);
     font-weight: bold;
     font-size: 17px;
+    -webkit-touch-callout:default;
+    -webkit-user-select:text;
+    -moz-user-select:text;
+    -ms-user-select:text;
+    user-select:text;
 }
 
 .grid-item-post-date {
@@ -281,9 +298,6 @@ h1, p {
     color: var(--gray-button);
     font-size: 25px;
     cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none; /*Safari*/
-    -moz-user-select: none; /*Firefox*/
 }
 
 .grid-item-post-options ul {
@@ -295,9 +309,6 @@ h1, p {
     border-radius: 10px;
     position: absolute;
     list-style-type: none;
-    user-select: none;
-    -webkit-user-select: none; /*Safari*/
-    -moz-user-select: none; /*Firefox*/
     background-color: white;
     border: 1px solid var(--border);
 
@@ -314,6 +325,14 @@ h1, p {
 
 .grid-item-post-body {
     grid-area: post-body;
+}
+
+.grid-item-post-body p {
+    -webkit-touch-callout:default;
+    -webkit-user-select:text;
+    -moz-user-select:text;
+    -ms-user-select:text;
+    user-select:text;
 }
 
 #grid-item-post-image {
@@ -333,15 +352,9 @@ h1, p {
     padding-top: 10px;
     height: 40px;
     grid-area: post-likes;
-    user-select: none;
-    -webkit-user-select: none; /*Safari*/
-    -moz-user-select: none; /*Firefox*/
 }
 
 .grid-item-post-likes span {
-    user-select: none;
-    -webkit-user-select: none; /*Safari*/
-    -moz-user-select: none; /*Firefox*/
     font-weight: normal;
     font-size: 20px;
     margin-left: 10px;
@@ -402,9 +415,9 @@ h1, p {
     display: grid;
     grid-template-areas:
     'user-image form-name form-name form-name form-name form-name form-name form-name form-name form-name'
-    '. form-body form-body form-body form-body form-body form-body form-body form-body form-body'
-    '. post-image post-image post-image post-image post-image post-image post-image post-image post-image'
-    '. form-file form-file form-file form-file form-file form-file form-file form-cancel form-submit';
+    'form-body form-body form-body form-body form-body form-body form-body form-body form-body form-body'
+    'post-image post-image post-image post-image post-image post-image post-image post-image post-image post-image'
+    'form-file form-file-name form-file-name form-file-name form-file-name form-file-name . . form-cancel form-submit';
     gap: 10px;
     padding: 10px;
     border-bottom: 1px solid var(--border);
