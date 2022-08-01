@@ -39,7 +39,11 @@
                 <div class="grid-item-post-name"><p>{{ post.name }}</p></div>
                 <div class="grid-item-post-date"><p>{{ post.date|naturaltime }}</p></div>
                 <div class="grid-item-post-options">
-                    <div class="options-icon"><p onclick="menu_toggle('{{post.id}}')">•••</p></div>
+                    <div id="options-icon{{post.id}}" class="options-icon" onclick="menu_toggle('{{post.id}}')">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                     <ul id="options-menu{{post.id}}">
                         <li><a href="/edit/{{ post.id }}/">Edit</a></li>
                         <li><a href="/delete/{{ post.id }}/">Delete</a></li>

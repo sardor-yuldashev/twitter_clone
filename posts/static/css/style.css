@@ -24,6 +24,7 @@
     --gray-text: rgb(71, 71, 71);
     --gray-button: rgb(207, 207, 207);
     --gray-button-text: #212529;
+    --post-options: rgb(124, 124, 124);
     --heart-inactive: rgb(202, 177, 177);
     --bar: rgb(235, 235, 235);
     --card: rgb(243, 243, 243);
@@ -44,6 +45,7 @@
     --gray-text: rgb(128, 128, 128);
     --gray-button: rgb(230, 230, 230);
     --gray-button-text: #212529;
+    --post-options: rgb(172, 172, 172);
     --heart-inactive: rgb(80, 58, 58);
     --bar: rgb(23, 25, 29);
     --card: rgb(33, 37, 43);
@@ -296,25 +298,69 @@ h1, p {
 }
 
 .options-icon {
-    text-align: right;
-    letter-spacing: 2px;
-    color: var(--gray-button);
-    font-size: 25px;
+    margin: 0 auto;
+    padding: 10px 0;
+    height: 8px;
+    width: 25px;
+    position: relative;
+    float: right;
     cursor: pointer;
+    z-index: 2;
+}
+
+.options-icon div {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--post-options);
+    transition: all .2s ease-in-out;
+}
+
+.options-icon > :nth-child(1) {
+    left: 0;
+}
+
+.options-icon > :nth-child(2) {
+    left: calc(50% - 3px);
+}
+
+.options-icon > :nth-child(3) {
+    right: 0;
+}
+
+.menu-anim > :nth-child(1) {
+    border-radius: 3px;
+    width: 22px;
+    height: 5px;
+    left: calc(50%);
+    transform: translateX(-50%) rotate(135deg);
+}
+
+.menu-anim > :nth-child(2) {
+    opacity: 0;
+}
+
+.menu-anim > :nth-child(3) {
+    border-radius: 3px;
+    width: 22px;
+    height: 5px;
+    right: calc(50%);
+    transform: translateX(50%) rotate(225deg);
 }
 
 .grid-item-post-options ul {
     display: none;
-    /* display: none; change this in js */
-    /* left: -100%; change this in js */
-    /* top: -25%; change this in js */
-    padding: 15px;
-    border-radius: 10px;
-    position: absolute;
+    /* position: absolute;
+    top: -6px;
+    right: 30px; */
     list-style-type: none;
-    background-color: white;
+    z-index: 1;
     border: 1px solid var(--border);
+}
 
+.grid-item-post-options ul li {
+    margin: 5px;
 }
 
 .grid-item-post-options ul li a {
@@ -322,20 +368,16 @@ h1, p {
     color: rgb(29, 161, 242);
 }
 
-.grid-item-post-options ul li a:hover {
-    color: #0d6efd;
-}
-
 .grid-item-post-body {
     grid-area: post-body;
 }
 
 .grid-item-post-body p {
-    -webkit-touch-callout:default;
-    -webkit-user-select:text;
-    -moz-user-select:text;
-    -ms-user-select:text;
-    user-select:text;
+    -webkit-touch-callout: default;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 
 #grid-item-post-image {
@@ -465,6 +507,15 @@ h1, p {
         font-size: 18px;
         height: calc(150px - 20px);
     }
+
+    /* maybe */
+    /* .grid-container-post {
+        grid-template-areas:
+        'user-image user-name post-date . . . . . . post-options'
+        'post-body post-body post-body post-body post-body post-body post-body post-body post-body post-body' 
+        'post-image post-image post-image post-image post-image post-image post-image post-image post-image post-image'
+        'post-likes . . . . . . . . .';
+    } */
 
     .grid-item-post-name p, .grid-item-post-body p {
         font-size: 18px;

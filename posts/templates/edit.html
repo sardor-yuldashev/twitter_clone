@@ -29,7 +29,7 @@
                     <input id="upload" name="image" type="file">
                 </div>
                 {% if post.image != None %}
-                <div id="grid-item-post-image" onclick="window.open('{{ post.image.url }}', '_blank')" style="background: url('{{ post.image.url }}')"></div>
+                    <div id="grid-item-post-image" onclick="window.open('{{ post.image.url }}', '_blank')" style="background: url('{{ post.image.url }}')"></div>
                 {% endif %}
                 <div class="grid-item-form-file-name"><span id="file-name"></span></div>
                 <div class="grid-item-form-cancel"><input type="button" value="Cancel" onclick="window.location.href = '/'" ></div>

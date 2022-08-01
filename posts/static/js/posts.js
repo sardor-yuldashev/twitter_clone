@@ -3,6 +3,7 @@ let menu = false;
 let last_id = "";
 function menu_toggle(post_id){
     let el = document.getElementById("options-menu" + post_id);
+    let icon = document.getElementById("options-icon" + post_id);
     // let topPos = el.getBoundingClientRect().top + window.scrollY;
     // let leftPos = el.getBoundingClientRect().left + window.scrollX;
     // console.log(topPos);
@@ -11,15 +12,22 @@ function menu_toggle(post_id){
         el.style.display = "block";
         menu = true;
         last_id = post_id;
+        icon.classList.add("menu-anim");
     }else if(menu === true && last_id === post_id) {
         el.style.display = "none";
         last_id = "";
         menu = false;
+        icon.classList.remove("menu-anim");
     }else if(menu === true && last_id !== post_id){
+        // turn off on old element
         let last_el = document.getElementById("options-menu" + last_id);
         last_el.style.display = "none";
+        let last_icon = document.getElementById("options-icon" + last_id);
+        last_icon.classList.remove("menu-anim");
+        // activate on new element
         el.style.display = "block";
         last_id = post_id;
+        icon.classList.add("menu-anim");
     }
 }
 
