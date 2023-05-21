@@ -1,19 +1,5 @@
-# Twitter-Clone
-
-Twitter like app - My first project at Techis
-Users can post tweets and see everyone's them.
-To make the project simple, we do not have a sign/login function.
-So there are not user accounts and follow function.
-
-[LIVE Twitter clone DEMO](https://sy-twitter-clone.herokuapp.com/)
-
-![image](https://user-images.githubusercontent.com/9244226/182232172-5ea4dbf4-5d3e-4f6a-baff-1448ee51919e.png)
-
-## Tech used
-
-* Html
-* Css
-* Bootstrap
-* Javascript / JQuery
-* Django
-* Cloudinary (To host uploaded images on CDN)
+# benchmark-app
+Demo project for qa-ing videos based on various metrics from different remote machines. Made with flask and sveltejs
+<img width="1123" alt="benchmark" src="https://github.com/sardor-yuldashev/benchmark-app/assets/9244226/7f2d0b34-7579-4544-b1a7-2cd7425e2b48">
+<img width="1124" alt="dashboard" src="https://github.com/sardor-yuldashev/benchmark-app/assets/9244226/12104c5d-582a-478b-aeda-cf09f36bf070">
+Demo link https://benchmark-app.herokuapp.com
