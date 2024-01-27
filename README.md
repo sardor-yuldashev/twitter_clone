@@ -1,9 +1,10 @@
 # Twitter-Clone
 
-Twitter like app - My first project at Techis
-Users can post tweets and see everyone's them.
+Twitter like app - My first project at Tech I.S
+
+Users can post tweets and see everyone's posts.
 To make the project simple, we do not have a sign/login function.
-So there are not user accounts and follow function.
+So there are no user accounts and follow function.
 
 Demo link
 https://twitter-clone-project-1.herokuapp.com
